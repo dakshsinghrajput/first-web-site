@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quadratic Equation Solver</title>
+</head>
+<body>
+
+<h2>Quadratic Equation Solver</h2>
+
+<form id="quadraticForm">
+  <label for="a">Coefficient of x^2:</label><br>
+  <input type="number" id="a" name="a" required><br>
+  <label for="b">Coefficient of x:</label><br>
+  <input type="number" id="b" name="b" required><br>
+  <label for="c">Constant value:</label><br>
+  <input type="number" id="c" name="c" required><br><br>
+  <button type="button" onclick="solveQuadratic()">Solve</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+function solveQuadratic() {
+  var a = parseFloat(document.getElementById("a").value);
+  var b = parseFloat(document.getElementById("b").value);
+  var c = parseFloat(document.getElementById("c").value);
+  
+  var discriminant = b**2 - 4*a*c;
+  var resultDiv = document.getElementById("result");
+  
+  if (discriminant > 0) {
+    var x1 = (-b + Math.sqrt(discriminant)) / (2*a);
+    var x2 = (-b - Math.sqrt(discriminant)) / (2*a);
+    resultDiv.innerHTML = "Roots are real and distinct.<br>";
+    resultDiv.innerHTML += "x is + is " + x1 + "<br>";
+    resultDiv.innerHTML += "x is - is " + x2;
+  } else if (discriminant == 0) {
+    var x = -b / (2*a);
+    resultDiv.innerHTML = "Roots are real and equal.<br>";
+    resultDiv.innerHTML += "x is " + x;
+  } else {
+    resultDiv.innerHTML = "Roots are imaginary.";
+  }
+}
+</script>
+
+</body>
+</html>
